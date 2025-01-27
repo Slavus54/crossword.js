@@ -6,7 +6,7 @@ Great app to build own crossword or try guess fillword without any framework.
   
 ### Technologies   
 
-Frontend: *TypeScript, Webpack, datus.js, codus.js*    
+Frontend: *TypeScript, Vite, datus.js, codus.js*    
 Backend: *PostgreSQL, fs*  
 State Management: *Local/Session Storages*             
 Unit Testing: *None*      
@@ -24,4 +24,5 @@ Deployment: *Vercel*
 
 *https://crossword-js.vercel.app*    
 
-![sc](https://github.com/user-attachments/assets/a564efdc-cbda-45d2-9741-65e3f22538e2)
+
+![sc](https://github.com/user-attachments/assets/96baa286-7343-413b-90a3-01f6838e8fa9)
