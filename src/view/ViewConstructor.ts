@@ -47,6 +47,7 @@ export class ViewConstructor {
             let headline = this.create('h2')
             let themesContainer = this.create('div')
             let wordsContainer = this.create('div')
+            let btnReset = this.create('button')
             let levelSelect = this.create('select')
             let lengthContainer = this.create('div')
             let btnLess = this.create('button')
@@ -130,7 +131,7 @@ export class ViewConstructor {
             letterLabel.classList.add('letter-label')
 
             btnGenerate.id = 'btn-generate'
-            btnGenerate.textContent = 'Следующее'
+            btnGenerate.textContent = 'Другое'
 
             text.classList.add('text-word')
             text.setAttribute('placeholder', 'Опишите слово для пополнения фонда')
@@ -138,6 +139,9 @@ export class ViewConstructor {
             input.classList.add('input-word')
             input.setAttribute('placeholder', 'Введите слово')
             input.setAttribute('type', 'text')
+
+            btnReset.id = 'btn-reset'
+            btnReset.textContent = 'Сбросить'
 
             btnContainer.classList.add('items')
             btnContainer.classList.add('little')
@@ -187,6 +191,10 @@ export class ViewConstructor {
 
             body.appendChild(cellsContainer)
             body.appendChild(wordLabel)
+            
+            if (crossword.mainword !== '') {
+                body.appendChild(btnReset)
+            }
 
             body.appendChild(text)
             body.appendChild(themesContainer)

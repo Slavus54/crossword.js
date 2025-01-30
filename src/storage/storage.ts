@@ -98,7 +98,10 @@ export const onDeleteCrosswordWord = (id: string) => {
     }
 }
 
-export const onDeleteAllCrosswordWords = () => localStorage.setItem(CROSSWORD_STORAGE_KEY, JSON.stringify({words: [], total: 0, mainword: '', width: 0, dateUp: datus.now('date')}))
+export const onDeleteAllCrosswordWords = () => {
+    localStorage.setItem(CROSSWORD_STORAGE_KEY, JSON.stringify({words: [], total: 0, mainword: '', width: 0, dateUp: datus.now('date')}))
+    window.location.reload()
+}
 
 // Longest word
 

@@ -1,6 +1,6 @@
 import {FatherComponent} from '../FatherComponent'
 import {onCreateWord} from '@/http/http'
-import {onInitCrossword, onInitWords, onAddCrosswordWord, onUpdateCrosswordWordPosition, onInitLongestWord, onUpdateLongestWord} from '@/storage/storage'
+import {onInitCrossword, onInitWords, onAddCrosswordWord, onUpdateCrosswordWordPosition, onDeleteAllCrosswordWords, onInitLongestWord, onUpdateLongestWord} from '@/storage/storage'
 import {onEstimateTask, onGetRandomTask, onChooseRandomLetter} from '@/engine/engine'
 
 import {MAX_WORD_LENGTH, MIN_WORD_LENGTH} from '@/env/env'
@@ -15,6 +15,8 @@ export class Crossword extends FatherComponent {
         const themes = document.querySelectorAll('#theme-card')
         const wordTypes = document.querySelectorAll('#word-card')
         const levelSelect = document.querySelector('.level-select')
+
+        const btnReset = document.getElementById('btn-reset')
 
         const lengthLabel = document.querySelector('.label-length')
         const btnLengthLess = document.getElementById('btn-less')
@@ -41,6 +43,7 @@ export class Crossword extends FatherComponent {
         let letter: string = onChooseRandomLetter()
         let level: string = levelSelect.getAttribute('value')
         let length: number = MAX_WORD_LENGTH / 2
+        let isNotEmpty: boolean = crossword.mainword !== ''
         let value: string = ''
         let isIncludeLetter: boolean = false
         let text: string = ''
@@ -60,14 +63,16 @@ export class Crossword extends FatherComponent {
 
         onUpdatePoints()
 
-        headline.textContent = `Составьте собственный кроссворд на ${total} баллов`
-        keywordLabel.textContent = `Ключевое слово - ${crossword.mainword}`
+        headline.textContent = `Составьте собственный кроссворд (${total} баллов)`
+        keywordLabel.textContent = `Ключевое слово - ${isNotEmpty ? crossword.mainword : '?'}`
         pointsLabel.textContent = `Итоговая оценка: ${points} баллов`
         letterLabel.textContent = `Есть ли в слове буква ${letter}?`
         
         if (item) {
             textLabel.textContent = 'Определение: ' + item.content
         }
+
+        btnReset?.addEventListener('click', () => onDeleteAllCrosswordWords())
 
         themes.forEach(el => {
             let value = el.textContent
@@ -133,7 +138,7 @@ export class Crossword extends FatherComponent {
             let flag: boolean = onUpdatePoints()
 
             total += points
-
+    
             onAddCrosswordWord(value, flag ? item.category : theme, flag ? item.type : word, points)
             window.location.reload()
         })
@@ -156,7 +161,7 @@ export class Crossword extends FatherComponent {
                     //@ts-ignore
                     node.classList.add('marked')
 
-                    keywordLabel.textContent = mainword
+                    keywordLabel.textContent = 'Ключевое слово:  ' + mainword
 
                     el.childNodes.forEach((item, index) => {
                         if (index !== idx) {
