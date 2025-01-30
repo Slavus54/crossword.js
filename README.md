@@ -2,7 +2,7 @@
 
 ### About         
 
-Great app to build own crossword or try guess fillword without any framework.          
+Vanilla web app to build and guess crossword/fillword 💎   
   
 ### Technologies   
 
@@ -14,15 +14,14 @@ Deployment: *Vercel*
 
 ### Features        
 
-- Own rendering and routing on client  
-- SSE shares word in file  
-- Crossword and fillword building system    
-- Persist data in Local Storage  
-- Adding new words to database    
+- Vanilla rendering and routing on client       
+- SSE shares word in file      
+- Crossword and Fillword     
+- Persist data in Local Storage      
+- Adding new words to database        
 
 ### URL    
 
-*https://crossword-js.vercel.app*    
+*https://crossword-js.vercel.app*      
 
-
-![sc](https://github.com/user-attachments/assets/96baa286-7343-413b-90a3-01f6838e8fa9)
+![crossword-sc](https://github.com/user-attachments/assets/c6262b50-84ee-4d40-a1af-837c8dabe26a)
